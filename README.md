@@ -4,15 +4,15 @@
 
 ## Integrantes del equipo
 Laura Cerdán Parra
-  (Usuario: lauuracp),
+  (Usuario: lauuracp)
 Noelia Mateos Najari
-  (Usuario: noeliamateos),
+  (Usuario: noeliamateos)
 Diego Fernández García 
-  (Usuario: Dieguiii) y
-Beatriz Galán Conde
+  (Usuario: Dieguiii)
+Beatriz Galán Conde  
   (Usuario: napolitanacc) 
 
 
 ## Objetivos del trabajo
-
+Ser las catolicas mas acuaticas
 [Lista de los objetivos que se persiguen con el trabajo propuesto.]
