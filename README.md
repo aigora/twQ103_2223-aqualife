@@ -9,7 +9,7 @@ Noelia Mateos Najari
   (Usuario: noeliamateos),
 Diego Fernández García 
   (Usuario: Dieguiii) y
-Beatriz Galán Conde  
+Beatriz Galán Conde
   (Usuario: napolitanacc) 
 
 
