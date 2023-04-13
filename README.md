@@ -3,14 +3,14 @@
 [Descripción breve del proyecto a realizar (2-3 frases).]
 
 ## Integrantes del equipo
-Laura Cerdán Parra\n
-  Usuario:\n
-Noelia Mateos Najari\n
-  Usuario:\n
-Diego Fernández García \n
-  Usuario:\n
-Beatriz Galán Conde \n 
-  Usuario:napolitanacc \n
+Laura Cerdán Parra
+  (Usuario:)
+Noelia Mateos Najari
+  (Usuario:)
+Diego Fernández García 
+  (Usuario:)
+Beatriz Galán Conde  
+  (Usuario:napolitanacc) 
 
 
 ## Objetivos del trabajo
