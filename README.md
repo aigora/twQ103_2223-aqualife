@@ -7,7 +7,7 @@ Laura Cerdán Parra
   (Usuario: lauuracp)
 Noelia Mateos Najari
   (Usuario: noeliamateos)
-Diego Fernández García 
+Diego Fernández Garcia 
   (Usuario: Dieguiii)
 Beatriz Galán Conde  
   (Usuario: napolitanacc) 
