@@ -4,11 +4,11 @@
 
 ## Integrantes del equipo
 Laura Cerdán Parra
-  (Usuario: lauuracp)
+  (Usuario: lauuracp),
 Noelia Mateos Najari
-  (Usuario: noeliamateos)
+  (Usuario: noeliamateos),
 Diego Fernández García 
-  (Usuario: Dieguiii)
+  (Usuario: Dieguiii) y
 Beatriz Galán Conde  
   (Usuario: napolitanacc) 
 
