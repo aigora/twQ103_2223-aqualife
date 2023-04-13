@@ -4,7 +4,7 @@
 
 ## Integrantes del equipo
 Laura Cerdán Parra
-  (Usuario:)
+  (Usuario: lauuracp)
 Noelia Mateos Najari
   (Usuario:)
 Diego Fernández García 
