@@ -1,9 +1,16 @@
-# UwU
+# Titulo del trabajo
 
 [Descripción breve del proyecto a realizar (2-3 frases).]
 
 ## Integrantes del equipo
-
+Laura Cerdán Parra
+  Usuario:
+Noelia Mateos Najari
+  Usuario:
+Diego Fernández García
+  Usuario:
+Beatriz Galán Conde 
+  Usuario:napolitanacc
 [Nombres, apellidos, y usuario GitHub de los integrantes del equipo.]
 
 ## Objetivos del trabajo
