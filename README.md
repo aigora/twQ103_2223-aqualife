@@ -1,16 +1,16 @@
-# Titulo del trabajo
+# Medio Ambiente
 
 [Descripción breve del proyecto a realizar (2-3 frases).]
 
 ## Integrantes del equipo
 Laura Cerdán Parra
-  (Usuario: lauuracp)
+  (lauuracp)
 Noelia Mateos Najari
-  (Usuario: noeliamateos)
+  (noeliamateos)
 Diego Fernández García 
-  (Usuario: Dieguiii)
+  (Dieguiii)
 Beatriz Galán Conde  
-  (Usuario: napolitanacc) 
+  (napolitanacc) 
 
 
 ## Objetivos del trabajo
