@@ -1,15 +1,15 @@
 # Titulo del trabajo
 
-[Descripción breve del proyecto a realizar (2-3 frases).]
+[Descripcion breve del proyecto a realizar (2-3 frases).]
 
 ## Integrantes del equipo
-Laura Cerdán Parra
+Laura Cerdan Parra
   (Usuario: lauuracp)
 Noelia Mateos Najari
   (Usuario: noeliamateos)
-Diego Fernández García 
+Diego Fernandez Garcia 
   (Usuario: Dieguiii)
-Beatriz Galán Conde  
+Beatriz Galan Conde  
   (Usuario: napolitanacc) 
 
 
