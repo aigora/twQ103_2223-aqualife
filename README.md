@@ -6,11 +6,11 @@
 Laura Cerdán Parra
   (Usuario: lauuracp)
 Noelia Mateos Najari
-  (Usuario:)
+  (Usuario: noeliamateos)
 Diego Fernández García 
-  (Usuario:)
+  (Usuario: Dieguiii)
 Beatriz Galán Conde  
-  (Usuario:napolitanacc) 
+  (Usuario: napolitanacc) 
 
 
 ## Objetivos del trabajo
