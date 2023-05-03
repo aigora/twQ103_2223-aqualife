@@ -13,19 +13,22 @@ float  mediaPh(struct TFuente[], )
 
 int main(){
 	
-	FILE *fichero=fopen("DATOS.txt", "r"); //Los datos están guardados en un fichero, queremos abrir el fichero para poder hacer referencia a ellos
-	if(fichero==NULL){
-		printf("ERROR, no se pudo abrir el fichero correctamente\n");
-		return 0;
-	}
+	int i;
 	char nombre[50];
 	float ph;
 	float turbidez;
 	float conductividad;
 	float coliformes;
 	
-	while(fscanf("%s %f %f %f %d"))
+	FILE *fichero=fopen("DATOS.txt", "r"); //Los datos están guardados en un fichero, queremos abrir el fichero para poder hacer referencia a ellos
+	if(fichero==NULL){
+		printf("ERROR, no se pudo abrir el fichero correctamente\n");
+		return 0;
+	}
 	struct TFuente barrio[NUM_FUENTES];
+	
+	while(fscanf("%s %f %f %f %d", barrio[i].nombre, barrio[i].ph, barrio[i].turbidez, barrio[i].conductividad, barrio[i].coliformes);
+	
 	
 	
 	
