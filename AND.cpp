@@ -1,5 +1,14 @@
 #include <stdio.h>
 
+struct TFuente{
+	char nombre[50];
+	float ph;
+	float conductividad;
+	float turbidez;
+	int coliformes;
+};
+
+
 int main(){
 	int opcion;
 	do{
