@@ -9,7 +9,7 @@ struct TFuente{   //Creamos una estructura que nos permita tener acceso a todos 
 	int coliformes;
 };
 
-float  mediaPh(struct TFuente[]);
+float  mediaPh(struct TFuente[],int longitud);
 
 
 int main(){
@@ -63,4 +63,15 @@ int main(){
 			
 	}
 	} while(0<opcion<4);
+}
+
+int mediaPh(struct TFuente[], int longitud){
+	float sumatorio = 0;
+
+    for(int i = 0; i < longitud; i++) {
+        sumatorio += TFuente[i];
+    }
+
+    float mediaPh = sumatorio / longitud;
+    return mediaPh;
 }
