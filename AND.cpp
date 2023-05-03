@@ -1,26 +1,22 @@
 #include <stdio.h>
-#define NUM_FUENTES 25
 
-struct TFuente{   //Creamos una estructura que nos permita tener acceso a todos los todos los campos de las fuentes
+struct TFuente{
 	char nombre[50];
 	float ph;
-	float turbidez;
 	float conductividad;
+	float turbidez;
 	int coliformes;
 };
 
+
+
 int main(){
 	
-	FILE *fichero=fopen("DATOS.txt", "r"); //Los datos están guardados en un fichero, queremos abrir el fichero para poder hacer referencia a ellos
-	if(fichero==NULL){
-		printf("ERROR, no se pudo abrir el fichero correctamente\n");
-		return 0;
-	}
-	
-	struct TFuente barrio[NUM_FUENTES];
-	
-	
-	
+	FILE *fichero = fopen("DATOS.txt", "r"); //Utilizamos este arreglo para leer el contenido del fichero
+	if (fichero == NULL) {
+    printf("No se pudo abrir el archivo.\n");
+    return 0;
+}
 	int opcion;
 	do{
 	printf("Bienvenidos a AquaLife\n");
