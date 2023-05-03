@@ -9,7 +9,14 @@ struct TFuente{
 };
 
 
+
 int main(){
+	
+	FILE *fichero = fopen("DATOS.txt", "r"); //Utilizamos este arreglo para leer el contenido del fichero
+	if (fichero == NULL) {
+    printf("No se pudo abrir el archivo.\n");
+    return 0;
+}
 	int opcion;
 	do{
 	printf("Bienvenidos a AquaLife\n");
