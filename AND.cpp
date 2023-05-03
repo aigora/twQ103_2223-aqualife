@@ -9,6 +9,8 @@ struct TFuente{   //Creamos una estructura que nos permita tener acceso a todos 
 	int coliformes;
 };
 
+float  mediaPh(struct TFuente[], )
+
 int main(){
 	
 	FILE *fichero=fopen("DATOS.txt", "r"); //Los datos están guardados en un fichero, queremos abrir el fichero para poder hacer referencia a ellos
@@ -16,7 +18,13 @@ int main(){
 		printf("ERROR, no se pudo abrir el fichero correctamente\n");
 		return 0;
 	}
+	char nombre[50];
+	float ph;
+	float turbidez;
+	float conductividad;
+	float coliformes;
 	
+	while(fscanf("%s %f %f %f %d"))
 	struct TFuente barrio[NUM_FUENTES];
 	
 	
