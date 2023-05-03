@@ -9,7 +9,7 @@ struct TFuente{   //Creamos una estructura que nos permita tener acceso a todos 
 	int coliformes;
 };
 
-float  mediaPh(struct TFuente[],int longitud);
+float  mediaPh(struct TFuente[],int longitud); //no deberia ser void mediaPh? (Laura)
 
 int main(){
 	
@@ -20,8 +20,8 @@ int main(){
 	float conductividad;
 	float coliformes;
 	
-	FILE *fichero=fopen("DATOS.txt", "r"); //Los datos están guardados en un fichero, queremos abrir el fichero para poder hacer referencia a ellos
-	if(fichero==NULL){ //Si el fichero no se ha abierto correctamente, el programa pondrá un mensaje para saber que hay un problema
+	FILE *fichero=fopen("DATOS.txt", "r");   //Los datos están guardados en un fichero, queremos abrir el fichero para poder hacer referencia a ellos
+	if(fichero==NULL){   //Si el fichero no se ha abierto correctamente, el programa pondrá un mensaje para saber que hay un problema
 		printf("ERROR, no se pudo abrir el fichero correctamente\n");
 		return 0;
 	}
@@ -31,9 +31,10 @@ int main(){
 	
 	
 	
-	
 	int opcion;
+	
 	do{
+	
 	printf("Bienvenidos a AquaLife\n");
 	printf("Seleccione la opcion que desee\n");
 	printf("1-Buscar las fuentes mas destacadas con agua potable\n");
@@ -61,10 +62,11 @@ int main(){
 			printf("Error. No se ha encontrado ningun resultado\n");
 			
 	}
-	} while(0<opcion<4);
+	} while(0<opcion<5);
+	
 }
 
-int mediaPh(struct TFuente[], int longitud){
+float mediaPh(struct TFuente[], int longitud){
 	float sumatorio = 0;
 
     for(int i = 0; i < longitud; i++) {
