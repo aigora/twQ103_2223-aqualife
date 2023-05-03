@@ -9,7 +9,7 @@ struct TFuente{   //Creamos una estructura que nos permita tener acceso a todos 
 	int coliformes;
 };
 
-float  mediaPh(struct TFuente[], )
+float  mediaPh(struct TFuente[]);
 
 int main(){
 	
