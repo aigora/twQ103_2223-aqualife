@@ -20,14 +20,14 @@ int main(){
 	float conductividad;
 	float coliformes;
 	
-	FILE *fichero=fopen("DATOS.txt", "r"); //Los datos están guardados en un fichero, queremos abrir el fichero para poder hacer referencia a ellos
-	if(fichero==NULL){ //Si el fichero no se ha abierto correctamente, el programa pondrá un mensaje para saber que hay un problema
+	FILE *fichero=fopen("DATOS.txt", "r"); //Los datos estï¿½n guardados en un fichero, queremos abrir el fichero para poder hacer referencia a ellos
+	if(fichero==NULL){ //Si el fichero no se ha abierto correctamente, el programa pondrï¿½ un mensaje para saber que hay un problema
 		printf("ERROR, no se pudo abrir el fichero correctamente\n");
 		return 0;
 	}
 	struct TFuente barrio[NUM_FUENTES];
 	
-	while(fscanf("%s %f %f %f %d", barrio[i].nombre, barrio[i].ph, barrio[i].turbidez, barrio[i].conductividad, barrio[i].coliformes);
+	while(fscanf(fichero,"%s %f %f %f %d", barrio[i].nombre, &barrio[i].ph, &barrio[i].turbidez, &barrio[i].conductividad, &barrio[i].coliformes);
 	
 	
 	
