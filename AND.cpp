@@ -11,6 +11,7 @@ struct TFuente{   //Creamos una estructura que nos permita tener acceso a todos 
 
 float  mediaPh(struct TFuente[]);
 
+
 int main(){
 	
 	int i;
@@ -20,8 +21,8 @@ int main(){
 	float conductividad;
 	float coliformes;
 	
-	FILE *fichero=fopen("DATOS.txt", "r"); //Los datos están guardados en un fichero, queremos abrir el fichero para poder hacer referencia a ellos
-	if(fichero==NULL){ //Si el fichero no se ha abierto correctamente, el programa pondrá un mensaje para saber que hay un problema
+	FILE *fichero=fopen("DATOS.txt", "r"); //Los datos estan guardados en un fichero, queremos abrir el fichero para poder hacer referencia a ellos
+	if(fichero==NULL){ //Si el fichero no se ha abierto correctamente, el programa pondra un mensaje para saber que hay un problema
 		printf("ERROR, no se pudo abrir el fichero correctamente\n");
 		return 0;
 	}
