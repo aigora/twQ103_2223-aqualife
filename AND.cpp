@@ -9,7 +9,7 @@ struct TFuente{   //Creamos una estructura que nos permita tener acceso a todos 
 	int coliformes;
 };
 
-float  mediaPh(struct TFuente[]);
+float  mediaPh(struct TFuente[], )
 
 int main(){
 	
@@ -27,11 +27,11 @@ int main(){
 	}
 	struct TFuente barrio[NUM_FUENTES];
 	
-	while(fscanf(fichero,"%s %f %f %f %d", barrio[i].nombre, &barrio[i].ph, &barrio[i].turbidez, &barrio[i].conductividad, &barrio[i].coliformes)!=EOF)
+	while(fscanf(fichero,"%s %f %f %f %d", barrio[i].nombre, &barrio[i].ph, &barrio[i].turbidez, &barrio[i].conductividad, &barrio[i].coliformes)!=EOF);
 	
 	
 	
-	
+/*	
 	int opcion;
 	do{
 	printf("Bienvenidos a AquaLife\n");
@@ -62,4 +62,9 @@ int main(){
 			
 	}
 	} while(0<opcion<4);
+}*/
+
+
+return 0;
+
 }
