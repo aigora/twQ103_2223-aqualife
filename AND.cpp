@@ -6,12 +6,11 @@
 
 #define MAX_ROWS 1000
 
-struct TDatos {
-  char parametros[20];
-  float pH;
-  float conductividad;
-  float turbidez;
-  float coliformes;
+struct TFuente{   //Creamos una estructura que nos permita tener acceso a todos los todos los campos de las fuentes
+	char nombre[50];
+	float ph;
+	float turbidez;
+	float conductividad;
+	int coliformes;
 };
-
 
