@@ -15,14 +15,14 @@ struct TDatos {
 };
 
 int main() {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // Obtener el identificador de la consola
-  CONSOLE_SCREEN_BUFFER_INFO consoleInfo; // Obtener informaciï¿½n de la consola
+  HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // Almacena identificador de la consola
+  CONSOLE_SCREEN_BUFFER_INFO consoleInfo; // Almacena información de la consola
   WORD saved_attributes; // Almacenar los atributos originales de la consola
-  GetConsoleScreenBufferInfo(hConsole, &consoleInfo); // Obtener informaciï¿½n de la consola
+  GetConsoleScreenBufferInfo(hConsole, &consoleInfo); // Obtener información de la consola
   saved_attributes = consoleInfo.wAttributes; // Almacenar los atributos originales de la consola
 
-  // Modificar los atributos de la consola
-  SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY); // Azul claro
+  	// Modificar los atributos de la consola
+  	SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY); // Azul claro
 
 	struct TDatos datos[MAX_ROWS];
 	char filename[100]; 
@@ -30,7 +30,7 @@ int main() {
   	printf("--------------------BIENVENID@ A AQUALIFE-------------------\n");
   	//Abrimos el fichero
 	FILE* fentrada;
-  	//Se abrirï¿½ el fichero que el usuario introduzca entre los distintos ficheros con datos de fuentes que el programa puede ofrecer
+  	//Se abrirá el fichero que el usuario introduzca entre los distintos ficheros con datos de fuentes que el programa puede ofrecer
   	printf("Estos son algunos archivos con los que puede trabajar: \n");
 	printf("Lavapies.txt\n");
   	printf("Barajas.txt\n");
@@ -53,10 +53,10 @@ int main() {
   	fclose(fentrada);
 
   	int opcion;
-  	do {//El bucle do-while se ejecutarï¿½ al menos una vez antes de verificar la opciï¿½n es vï¿½lida
+  	do {//El bucle do-while se ejecutara al menos una vez antes de verificar la opcion es valida
   		
   		printf("---MENU---\n");
-  		printf("Por favor, introduzca la opciï¿½n que desea realizar: \n");
+  		printf("Por favor, introduzca la opcion que desea realizar: \n");
     	printf("1. Realizar la media del pH del agua de las fuentes.\n");
     	printf("2. Realizar la media de la conductividad del agua de las fuentes.\n");
     	printf("3. Realizar la media de la turbidez del agua de las fuentes.\n");
@@ -122,7 +122,7 @@ int main() {
           }
         }
         if (encontrado==0) {
-          printf("No se encontró la fuente.\n");
+          printf("No se ha encontrado la fuente.\n");
         }
         break;
       }
@@ -159,7 +159,7 @@ int main() {
       }
       
       default: {
-        printf("Opción inválida.\n");
+        printf("Opcion invalida.\n");
         break;
       }
     }
