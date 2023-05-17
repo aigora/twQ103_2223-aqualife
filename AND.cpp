@@ -110,5 +110,62 @@ int main() {
         printf("La media del dato coliformes es: %.2f\n", media_coliformes);
         break;
       }
+      case 5: {
+        char fuente[20];
+        printf("Ingrese el nombre del parametro (fuente): ");
+        scanf("%s", fuente);
+        int encontrado = 0;
+        for (int i = 0; i < num_rows; i++) {
+          if (strcmp(datos[i].parametros, fuente) == 0) {
+        	encontrado = 1;
+            printf("Parametro: %s, pH: %.2f, Conductividad: %.2f, Turbidez: %.2f, Coliformes: %.2f\n", datos[i].parametros, datos[i].pH, datos[i].conductividad, datos[i].turbidez, datos[i].coliformes);
+          }
+        }
+        if (encontrado==0) {
+          printf("No se encontró la fuente.\n");
+        }
+        break;
+      }
+      case 6: {
+  		fentrada= fopen(filename, "r");
+  		if (fentrada == NULL) {
+    		printf("No se pudo abrir el archivo.\n");
+   			break;
+  		}
+
+  		// Leer la primera fila del archivo y almacenarla en una variable separada
+  		char header[100];
+  		fgets(header, sizeof(header), fentrada);
+
+  		// Mostrar la cabecera de las columnas
+  		printf("%-20s%-20s%-20s%-20s%-20s\n", "Parametros", "pH", "Conductividad", "Turbidez", "Coliformes");
+
+  		// Leer los datos del archivo y almacenarlos en un arreglo de estructuras
+  		while (fscanf(fentrada, "%s\t%f\t%f\t%f\t%f\n", datos[num_rows].parametros, &datos[num_rows].pH, &datos[num_rows].conductividad, &datos[num_rows].turbidez, &datos[num_rows].coliformes) !=EOF){
+    		num_rows++;
+    		printf("%-20s%-20.2f%-20.2f%-20.2f%-20.2f\n", datos[num_rows-1].parametros, datos[num_rows-1].pH, datos[num_rows-1].conductividad, datos[num_rows-1].turbidez, datos[num_rows-1].coliformes);
+  		}
+
+  		fclose(fentrada);
+  
+  		printf("\n");
+    	getchar();
+  
+  		break;
+	}
+	  case 7: {
+        printf("Gracias por confiar en AquaLife\n");
+        break;
+      }
+      
+      default: {
+        printf("Opción inválida.\n");
+        break;
+      }
+    }
+  } while (opcion!= 7);
+
+  return 0;
+}
 
 
