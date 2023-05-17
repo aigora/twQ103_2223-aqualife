@@ -30,6 +30,14 @@ int main() {
   	printf("--------------------BIENVENID@ A AQUALIFE-------------------\n");
   	//Abrimos el fichero
 	FILE* fentrada;
+	
+	printf("");
+	printf("1. Ya tiene una cuenta? Iniciar sesion");
+	printf("2. Es nuevo? Registrarse");
+	printf("3. Acceder como invitado");
+	printf("4. Acceder como administrador");
+	scanf("");
+	
   	//Se abrirá el fichero que el usuario introduzca entre los distintos ficheros con datos de fuentes que el programa puede ofrecer
   	printf("Estos son algunos archivos con los que puede trabajar: \n");
 	printf("Lavapies.txt\n");
