@@ -16,9 +16,9 @@ struct TDatos {
 
 int main() {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // Obtener el identificador de la consola
-  CONSOLE_SCREEN_BUFFER_INFO consoleInfo; // Obtener información de la consola
+  CONSOLE_SCREEN_BUFFER_INFO consoleInfo; // Obtener informaciï¿½n de la consola
   WORD saved_attributes; // Almacenar los atributos originales de la consola
-  GetConsoleScreenBufferInfo(hConsole, &consoleInfo); // Obtener información de la consola
+  GetConsoleScreenBufferInfo(hConsole, &consoleInfo); // Obtener informaciï¿½n de la consola
   saved_attributes = consoleInfo.wAttributes; // Almacenar los atributos originales de la consola
 
   // Modificar los atributos de la consola
@@ -30,13 +30,13 @@ int main() {
   	printf("--------------------BIENVENID@ A AQUALIFE-------------------\n");
   	//Abrimos el fichero
 	FILE* fentrada;
-  	//Se abrirá el fichero que el usuario introduzca entre los distintos ficheros con datos de fuentes que el programa puede ofrecer
+  	//Se abrirï¿½ el fichero que el usuario introduzca entre los distintos ficheros con datos de fuentes que el programa puede ofrecer
   	printf("Estos son algunos archivos con los que puede trabajar: \n");
 	printf("Lavapies.txt\n");
   	printf("Barajas.txt\n");
   	printf("Carabanchel.txt\n");
   	printf("Arganzuela.txt\n");
-  	printf("Por favor, introduzca el nombre del archivo con el que desea trabajar: \n");//Imprime texto en la consola para que el usuario sepa lo que le está pidiendo el programa
+  	printf("Por favor, introduzca el nombre del archivo con el que desea trabajar: \n");//Imprime texto en la consola para que el usuario sepa lo que le estï¿½ pidiendo el programa
   	scanf("%s", filename); //Captura lo que ha escrito el usuario y le asigna una variable
 
   	fentrada= fopen(filename, "r");
@@ -53,10 +53,10 @@ int main() {
   	fclose(fentrada);
 
   	int opcion;
-  	do {//El bucle do-while se ejecutará al menos una vez antes de verificar la opción es válida
+  	do {//El bucle do-while se ejecutarï¿½ al menos una vez antes de verificar la opciï¿½n es vï¿½lida
   		
   		printf("---MENU---\n");
-  		printf("Por favor, introduzca la opción que desea realizar: \n");
+  		printf("Por favor, introduzca la opciï¿½n que desea realizar: \n");
     	printf("1. Realizar la media del pH del agua de las fuentes.\n");
     	printf("2. Realizar la media de la conductividad del agua de las fuentes.\n");
     	printf("3. Realizar la media de la turbidez del agua de las fuentes.\n");
@@ -65,5 +65,50 @@ int main() {
     	printf("6. Imprimir los datos de las fuentes.\n");
 		printf("7. Salir.\n");
     	scanf("%d", &opcion);
+
+		 switch (opcion) {
+      case 1: {
+    	float media_pH = 0;
+    	for (int i = 0; i < num_rows; i++) {
+        	media_pH += datos[i].pH;
+    	}
+    	media_pH /= num_rows;
+    	printf("La media del dato pH es: %.2f\n", media_pH);
+
+    	if (media_pH < 7.0) {
+        	printf("El valor medio del ph medido en el agua de las fuentes indica que esta es acida.\n");
+    	} else if (media_pH > 7.0) {
+        	printf("El valor medio del ph medido en el agua de las fuentes indica que esta es basica.\n");
+    	} 
+    	break;
+      	}
+      	
+      case 2: {
+        float media_conductividad = 0;
+        for (int i = 0; i < num_rows; i++) {
+          media_conductividad += datos[i].conductividad;
+        }
+        media_conductividad /= num_rows;
+        printf("La media del dato conductividad es: %.2f\n", media_conductividad);
+        break;
+      }
+      case 3: {
+        float media_turbidez = 0;
+        for (int i = 0; i < num_rows; i++) {
+          media_turbidez += datos[i].turbidez;
+        }
+        media_turbidez /= num_rows;
+        printf("La media del dato turbidez es: %.2f\n", media_turbidez);
+        break;
+      }
+      case 4: {
+        float media_coliformes = 0;
+        for (int i = 0; i < num_rows; i++) {
+          media_coliformes += datos[i].coliformes;
+        }
+        media_coliformes /= num_rows;
+        printf("La media del dato coliformes es: %.2f\n", media_coliformes);
+        break;
+      }
 
 
