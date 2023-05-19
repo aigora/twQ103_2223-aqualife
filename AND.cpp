@@ -47,10 +47,10 @@ int main() {
 	
 	int cuenta;
 	printf("Identifiquese:\n");
-	printf("1. Es nuevo? Registrarse.\n");
-	printf("2. Ya tiene una cuenta? Iniciar sesion.\n");
-	printf("3. Acceder como invitado.\n");
-	printf("4. Acceder como administrador.\n");
+	printf("1. Es nuevo? Registrese.\n");
+	printf("2. Ya tiene una cuenta? Inicie sesion.\n");
+	printf("3. Acceda como invitado.\n");
+	printf("4. Acceda como administrador.\n");
 	printf("5. Salir.\n");
 	scanf("%d",&cuenta);
 	
@@ -75,9 +75,9 @@ int main() {
 		case 4:{
 			iniciarSesion();
 			if (esAdmin==0) {
-            	printf("Acceso como administrador.\n");
+            	printf("Ha accedido usted como administrador.\n");
             } else {
-                printf("Acceso denegado. No tienes permiso como administrador.\n");
+                printf("Acceso denegado. No tiene permiso para acceder como administrador.\n");
             }
 			break;
 		}
@@ -88,11 +88,7 @@ int main() {
 	
 	
   	//Se abrirá el fichero que el usuario introduzca entre los distintos ficheros con datos de fuentes que el programa puede ofrecer
-  	printf("\nEstos son algunos archivos con los que puede trabajar: \n");
-	printf("Lavapies.txt\n");
-  	printf("Barajas.txt\n");
-  	printf("Carabanchel.txt\n");
-  	printf("Arganzuela.txt\n");
+
   	printf("Por favor, introduzca el nombre del archivo con el que desea trabajar: \n");//Imprime texto en la consola para que el usuario sepa lo que le estï¿½ pidiendo el programa
   	scanf("%s", filename); //Captura lo que ha escrito el usuario y le asigna una variable
 
@@ -120,10 +116,14 @@ int main() {
     	printf("4. Realizar la media de los coliformes presentes en el agua de las fuentes.\n");
     	printf("5. Buscar los datos de una fuente.\n");
     	printf("6. Imprimir los datos de las fuentes.\n");
-		printf("7. Salir.\n");
+    	printf("7. Imprimir los datos de la fuente con el ph mas alto.\n");
+    	printf("8. Imprimir los datos de la fuente con el ph mas bajo. \n");
+    	printf("9. ¿Cual es la fuente con el agua menos turbia?. Conozca sus datos\n");
+		printf("10. Salir.\n");
     	scanf("%d", &opcion);
 
 		 switch (opcion) {
+		 	
       case 1: {
     	float media_pH = 0;
     	for (int i = 0; i < num_rows; i++) {
@@ -149,6 +149,7 @@ int main() {
         printf("La media del dato conductividad es: %.2f\n", media_conductividad);
         break;
       }
+      
       case 3: {
         float media_turbidez = 0;
         for (int i = 0; i < num_rows; i++) {
@@ -158,6 +159,7 @@ int main() {
         printf("La media del dato turbidez es: %.2f\n", media_turbidez);
         break;
       }
+      
       case 4: {
         float media_coliformes = 0;
         for (int i = 0; i < num_rows; i++) {
@@ -167,6 +169,7 @@ int main() {
         printf("La media del dato coliformes es: %.2f\n", media_coliformes);
         break;
       }
+      
       case 5: {
         char fuente[20];
         printf("Ingrese el nombre del parametro (fuente): ");
@@ -183,6 +186,7 @@ int main() {
         }
         break;
       }
+      
       case 6: {
   		fentrada= fopen(filename, "r");
   		if (fentrada == NULL) {
@@ -210,7 +214,86 @@ int main() {
   
   		break;
 	}
+	
 	  case 7: {
+	  	printf("\nLos datos de la fuente con el pH mas alto son:\n");
+    	float max_pH = datos[0].pH;
+    	int max_index = 0;
+    	for (int i = 1; i < num_rows; i++) {
+        	if (datos[i].pH > max_pH) {
+            	max_pH = datos[i].pH;
+            	max_index = i;
+        	}
+    	}
+
+    	printf("Nombre: %s\n", datos[max_index].parametros);
+    	printf("pH: %.2f\n", datos[max_index].pH);
+    	printf("Conductividad: %.2f\n", datos[max_index].conductividad);
+    	printf("Turbidez: %.2f\n", datos[max_index].turbidez);
+    	printf("Coliformes: %.2f\n", datos[max_index].coliformes);
+	  	
+		break;
+	  }
+	  
+	  case 8: {
+	  	printf("\nLos datos de la fuente con el pH mas bajo son:\n");
+
+    float min_pH = 0;
+    int min_index = -1;
+
+    for (int i = 0; i < num_rows; i++) {
+        if (datos[i].pH != 0 && strcmp(datos[i].parametros, "Parametros") != 0) {
+            if (min_index == -1 || datos[i].pH < min_pH) {
+                min_pH = datos[i].pH;
+                min_index = i;
+            }
+        }
+    }
+
+    if (min_index != -1) {
+        printf("Nombre: %s\n", datos[min_index].parametros);
+        printf("pH: %.2f\n", datos[min_index].pH);
+        printf("Conductividad: %.2f\n", datos[min_index].conductividad);
+        printf("Turbidez: %.2f\n", datos[min_index].turbidez);
+        printf("Coliformes: %.2f\n", datos[min_index].coliformes);
+    } else {
+        printf("No se encontraron fuentes con pH distinto de cero y con campo Parametros informado.\n");
+    }
+    break;
+}
+	  	
+	  	
+	  
+	  	
+	  case 9: {
+	  	printf("\nLos datos de la fuente con el agua menos turbia es: \n");
+
+    	float min_turbidez = 0;
+    	int min_index = -1;
+
+    	for (int i = 0; i < num_rows; i++) {
+        	if (datos[i].turbidez!= 0 && strcmp(datos[i].parametros, "Parametros") != 0) {
+            	if (min_index == -1 || datos[i].turbidez < min_turbidez) {
+                	min_turbidez= datos[i].turbidez;
+                	min_index = i;
+            	}
+        	}
+    	}
+
+    	if (min_index != -1) {
+        	printf("Nombre: %s\n", datos[min_index].parametros);
+        	printf("pH: %.2f\n", datos[min_index].pH);
+        	printf("Conductividad: %.2f\n", datos[min_index].conductividad);
+        	printf("Turbidez: %.2f\n", datos[min_index].turbidez);
+        	printf("Coliformes: %.2f\n", datos[min_index].coliformes);
+    	}else {
+        	printf("No se encontraron fuentes con pH distinto de cero y con campo Parametros informado.\n");
+    	}
+	  	
+		break;
+	  }
+	  
+	  case 10: {
         printf("Gracias por confiar en AquaLife\n");
         break;
       }
@@ -220,7 +303,7 @@ int main() {
         break;
       }
     }
-  } while (opcion!= 7);
+  } while (opcion!= 9);
 
   return 0;
 }
