@@ -74,7 +74,7 @@ int main() {
     	printf("6. Imprimir los datos de las fuentes.\n");
     	printf("7. Imprimir los datos de la fuente con el ph mas alto.\n");
     	printf("8. Imprimir los datos de la fuente con el ph mas bajo.\n");
-    	printf("9. ¿Cual es la fuente con el agua menos turbia?. Conozca sus datos.\n");
+    	printf("9. Cual es la fuente con el agua menos turbia?. Conozca sus datos.\n");
 		printf("10. Salir.\n\n");
     	scanf("%d", &opcion);
     	printf("\n");
