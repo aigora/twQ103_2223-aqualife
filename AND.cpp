@@ -16,7 +16,7 @@ struct TDatos {
   float coliformes;
 };
 
-struct Usuario{
+/*struct Usuario{
 	char nombre[M];
 	char contrasena[N];
 	int esAdmin;
@@ -24,7 +24,7 @@ struct Usuario{
 
 //DECLARACIÓN PROTOTIPOS FUNCIONES
 void registrarUsuario();
-int iniciarSesion();
+int iniciarSesion();*/
 
 
 int main() {
@@ -47,7 +47,7 @@ int main() {
 	FILE* fentrada;
 	FILE* fsalida;
 	
-	int cuenta;
+/*	int cuenta;
 	printf("Identifiquese:\n");
 	printf("1. Es nuevo? Registrese.\n");
 	printf("2. Ya tiene una cuenta? Inicie sesion.\n");
@@ -86,7 +86,7 @@ int main() {
 		default:
 			printf("Opcion invalida, pruebe de nuevo.");
 			
-	}
+	}*/
 	
 	
   	//Se abrirá el fichero que el usuario introduzca entre los distintos ficheros con datos de fuentes que el programa puede ofrecer
@@ -310,7 +310,7 @@ int main() {
   return 0;
 }
 
-//DESARROLLO FUNCIONES
+/*//DESARROLLO FUNCIONES
 void registrarUsuario(){
 	struct Usuario nuevoUsuario;
 	FILE* fentrada;
