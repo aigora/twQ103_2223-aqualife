@@ -16,6 +16,26 @@ struct TDatos {
   float coliformes;
 };
 
+float calcularMediaPH(struct TDatos datos[], int num_rows) {
+	
+    float media_pH = 0;
+    for (int i = 0; i < num_rows; i++) {
+        media_pH += datos[i].pH;
+    }
+    media_pH /= num_rows;
+    return media_pH;
+}
+
+float calcularMediaConductividad(struct TDatos datos[], int num_rows) {
+	
+    float media_conductividad = 0;
+    for (int i = 0; i < num_rows; i++) {
+        media_conductividad += datos[i].conductividad;
+    }
+    media_conductividad /= num_rows;
+    return media_conductividad;
+}
+
 
 int main() {
   HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // Almacena identificador de la consola
@@ -82,11 +102,7 @@ int main() {
 		 switch (opcion) {
 		 	
       case 1: {
-    	float media_pH = 0;
-    	for (int i = 0; i < num_rows; i++) {
-        	media_pH += datos[i].pH;
-    	}
-    	media_pH /= num_rows;
+    	float media_pH = calcularMediaPH(datos, num_rows);
     	printf("La media del dato pH es: %.2f\n", media_pH);
 
     	if (media_pH < 7.0) {
@@ -98,11 +114,7 @@ int main() {
       	}
       	
       case 2: {
-        float media_conductividad = 0;
-        for (int i = 0; i < num_rows; i++) {
-          media_conductividad += datos[i].conductividad;
-        }
-        media_conductividad /= num_rows;
+        float media_conductividad = calcularMediaConductividad(datos, num_rows);
         printf("La media del dato conductividad es: %.2f\n", media_conductividad);
         break;
       }
