@@ -38,7 +38,7 @@ int main() {
   printf("Introduzca su nombre de usuario: \n");
   scanf("%s", nombre_ingresado);
 
-  printf("Introduzca su contraseña: \n");
+  printf("Introduzca su contrasena: \n");
   scanf("%s", contrasena_ingresada);
 
   // Verificar si el nombre de usuario y la contraseña coinciden con los datos del archivo
@@ -57,7 +57,7 @@ int main() {
     // Llamar al programa existente
     system("AND");
   } else {
-    printf("ACCESO DENEGADO. Nombre de usuario o contraseña incorrecta.\n");
+    printf("ACCESO DENEGADO. Nombre de usuario o contrasena incorrecta.\n");
   }
 
   return 0;
