@@ -149,18 +149,18 @@ int main() {
         break;
       }
       
-      case 5: {
-        char fuente[20];
-        printf("Ingrese el nombre del parametro (fuente): ");
+      case 5: { //Esta opción permite al usuario buscar un parámetro específico en la estructura de datos e imprime la información asociada al parámetro que se encuentra
+        char fuente[20]; //Arreglo de caracteres con tamaño 20
+        printf("Ingrese el nombre del parametro (fuente): ");//Se le pide al usuario que introduzca el nombre de la fuente de la que quiere saber información 
         scanf("%s", fuente);
-        int encontrado = 0;
+        int encontrado = 0; //Declaramos una variable bandera para que determine si se ha encontrado o no el nomre de la fuente que el usuario ha indicado 
         for (int i = 0; i < num_rows; i++) {
-          if (strcmp(datos[i].parametros, fuente) == 0) {
+          if (strcmp(datos[i].parametros, fuente) == 0) { //En cada iteración se van comparando los distintos parámetros con el parámetro ingresado con la función strcmp
         	encontrado = 1;
             printf("Parametro: %s, pH: %.2f, Conductividad: %.2f, Turbidez: %.2f, Coliformes: %.2f\n", datos[i].parametros, datos[i].pH, datos[i].conductividad, datos[i].turbidez, datos[i].coliformes);
           }
         }
-        if (encontrado==0) {
+        if (encontrado==0) { //Si el valor que devuelve es un cero, es que no se encontró la fuente
           printf("No se ha encontrado la fuente.\n");
         }
         break;
