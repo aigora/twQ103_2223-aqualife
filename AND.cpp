@@ -36,10 +36,12 @@ int main() {
 
   	// Modificar los atributos de la consola
   	SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY); // Azul claro
-
+	
+	//Declaración de variables
 	struct TDatos datos[MAX_ROWS];
 	char filename[100]; 
   	int num_rows = 0;
+  	
   	printf("--------------------BIENVENID@ A AQUALIFE-------------------\n");
   	//Abrimos el fichero
 	FILE* fentrada;
@@ -231,7 +233,7 @@ void registrarUsuario(){
 	FILE* fentrada;
 	FILE* fsalida;
 
-    printf("Nombre: ");
+    printf("Nombre de usuario: ");
     scanf("%s", nuevoUsuario.nombre);
 
     printf("Contrasena: ");
