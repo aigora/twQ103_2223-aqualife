@@ -45,7 +45,7 @@ int main() {
 	printf("Carabanchel.txt\n");
 	printf("Chamartin.txt\n");
 	printf("Lavapies.txt\n");
-	printf("RoquetasDeMar.txt\n"); 
+	printf("RoquetasDeMar.txt\n\n"); 
   	scanf("%s", filename); //Captura lo que ha escrito el usuario y le asigna una variable
 
   	fentrada= fopen(filename, "r");
@@ -64,7 +64,7 @@ int main() {
   	int opcion;
   	do {//El bucle do-while se ejecutara al menos una vez antes de verificar la opcion es valida
   		
-  		printf("---MENU---\n");
+  		printf("\n---MENU---\n");
   		printf("Por favor, introduzca la opcion que desea realizar: \n");
     	printf("1. Realizar la media del pH del agua de las fuentes.\n");
     	printf("2. Realizar la media de la conductividad del agua de las fuentes.\n");
@@ -73,10 +73,11 @@ int main() {
     	printf("5. Buscar los datos de una fuente.\n");
     	printf("6. Imprimir los datos de las fuentes.\n");
     	printf("7. Imprimir los datos de la fuente con el ph mas alto.\n");
-    	printf("8. Imprimir los datos de la fuente con el ph mas bajo. \n");
-    	printf("9. ¿Cual es la fuente con el agua menos turbia?. Conozca sus datos\n");
-		printf("10. Salir.\n");
+    	printf("8. Imprimir los datos de la fuente con el ph mas bajo.\n");
+    	printf("9. ¿Cual es la fuente con el agua menos turbia?. Conozca sus datos.\n");
+		printf("10. Salir.\n\n");
     	scanf("%d", &opcion);
+    	printf("\n");
 
 		 switch (opcion) {
 		 	
@@ -259,7 +260,7 @@ int main() {
         break;
       }
     }
-  } while (opcion!= 9);
+  } while (opcion<= 9);
 
   return 0;
 }
