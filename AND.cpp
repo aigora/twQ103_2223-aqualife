@@ -282,7 +282,7 @@ int main() {
         break;
       }
     }
-  } while (opcion<= 9);
+  } while (opcion!= 10);
 
   return 0;
 }
