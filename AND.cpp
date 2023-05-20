@@ -16,6 +16,16 @@ struct TDatos {
   float coliformes;
 };
 
+float calcularMediaPH(struct TDatos datos[], int num_rows) {
+	
+    float media_pH = 0;
+    for (int i = 0; i < num_rows; i++) {
+        media_pH += datos[i].pH;
+    }
+    media_pH /= num_rows;
+    return media_pH;
+}
+
 /*struct Usuario{
 	char nombre[M];
 	char contrasena[N];
@@ -127,11 +137,7 @@ int main() {
 		 switch (opcion) {
 		 	
       case 1: {
-    	float media_pH = 0;
-    	for (int i = 0; i < num_rows; i++) {
-        	media_pH += datos[i].pH;
-    	}
-    	media_pH /= num_rows;
+    	float media_pH = calcularMediaPH(datos, num_rows);
     	printf("La media del dato pH es: %.2f\n", media_pH);
 
     	if (media_pH < 7.0) {
@@ -371,6 +377,6 @@ int iniciarSesion(){
     fclose(fsalida);
 	
 	return 0;
-}
+}*/
 
 
