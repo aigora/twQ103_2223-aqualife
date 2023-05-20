@@ -16,26 +16,6 @@ struct TDatos {
   float coliformes;
 };
 
-float calcularMediaPH(struct TDatos datos[], int num_rows) {
-	
-    float media_pH = 0;
-    for (int i = 0; i < num_rows; i++) {
-        media_pH += datos[i].pH;
-    }
-    media_pH /= num_rows;
-    return media_pH;
-}
-
-/*struct Usuario{
-	char nombre[M];
-	char contrasena[N];
-	int esAdmin;
-};
-
-//DECLARACIÓN PROTOTIPOS FUNCIONES
-void registrarUsuario();
-int iniciarSesion();*/
-
 
 int main() {
   HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // Almacena identificador de la consola
@@ -57,51 +37,15 @@ int main() {
 	FILE* fentrada;
 	FILE* fsalida;
 	
-/*	int cuenta;
-	printf("Identifiquese:\n");
-	printf("1. Es nuevo? Registrese.\n");
-	printf("2. Ya tiene una cuenta? Inicie sesion.\n");
-	printf("3. Acceda como invitado.\n");
-	printf("4. Acceda como administrador.\n");
-	printf("5. Salir.\n");
-	scanf("%d",&cuenta);
-	
-	switch(cuenta){
-		int esAdmin;
-		case 1:{
-			registrarUsuario();
-			break;
-		}
-		case 2:{
-			esAdmin = iniciarSesion();
-                if (esAdmin) {
-                    printf("Inicio de sesión exitoso (administrador).\n");
-                } else {
-                    printf("Inicio de sesión exitoso (usuario).\n");
-                }
-		}
-		case 3:{
-			printf("Acceso como invitado.\n");
-			break;
-		}
-		case 4:{
-			iniciarSesion();
-			if (esAdmin==0) {
-            	printf("Ha accedido usted como administrador.\n");
-            } else {
-                printf("Acceso denegado. No tiene permiso para acceder como administrador.\n");
-            }
-			break;
-		}
-		default:
-			printf("Opcion invalida, pruebe de nuevo.");
-			
-	}*/
-	
-	
   	//Se abrirá el fichero que el usuario introduzca entre los distintos ficheros con datos de fuentes que el programa puede ofrecer
 
-  	printf("Por favor, introduzca el nombre del archivo con el que desea trabajar: \n");//Imprime texto en la consola para que el usuario sepa lo que le estï¿½ pidiendo el programa
+  	printf("Por favor, introduzca el nombre del archivo con el que desea trabajar: \n");//Imprime texto en la consola para que el usuario sepa lo que le está pidiendo el programa
+	printf("Arganzuela.txt\n");
+	printf("Barajas.txt\n");
+	printf("Carabanchel.txt\n");
+	printf("Chamartin.txt\n");
+	printf("Lavapies.txt\n");
+	printf("RoquetasDeMar.txt\n\n"); 
   	scanf("%s", filename); //Captura lo que ha escrito el usuario y le asigna una variable
 
   	fentrada= fopen(filename, "r");
@@ -120,7 +64,7 @@ int main() {
   	int opcion;
   	do {//El bucle do-while se ejecutara al menos una vez antes de verificar la opcion es valida
   		
-  		printf("---MENU---\n");
+  		printf("\n---MENU---\n");
   		printf("Por favor, introduzca la opcion que desea realizar: \n");
     	printf("1. Realizar la media del pH del agua de las fuentes.\n");
     	printf("2. Realizar la media de la conductividad del agua de las fuentes.\n");
@@ -129,15 +73,20 @@ int main() {
     	printf("5. Buscar los datos de una fuente.\n");
     	printf("6. Imprimir los datos de las fuentes.\n");
     	printf("7. Imprimir los datos de la fuente con el ph mas alto.\n");
-    	printf("8. Imprimir los datos de la fuente con el ph mas bajo. \n");
-    	printf("9. ¿Cual es la fuente con el agua menos turbia?. Conozca sus datos\n");
-		printf("10. Salir.\n");
+    	printf("8. Imprimir los datos de la fuente con el ph mas bajo.\n");
+    	printf("9. Cual es la fuente con el agua menos turbia?. Conozca sus datos.\n");
+		printf("10. Salir.\n\n");
     	scanf("%d", &opcion);
+    	printf("\n");
 
 		 switch (opcion) {
 		 	
       case 1: {
-    	float media_pH = calcularMediaPH(datos, num_rows);
+    	float media_pH = 0;
+    	for (int i = 0; i < num_rows; i++) {
+        	media_pH += datos[i].pH;
+    	}
+    	media_pH /= num_rows;
     	printf("La media del dato pH es: %.2f\n", media_pH);
 
     	if (media_pH < 7.0) {
@@ -311,72 +260,9 @@ int main() {
         break;
       }
     }
-  } while (opcion!= 9);
+  } while (opcion<= 9);
 
   return 0;
 }
-
-/*//DESARROLLO FUNCIONES
-void registrarUsuario(){
-	struct Usuario nuevoUsuario;
-	FILE* fentrada;
-	FILE* fsalida;
-
-    printf("Nombre de usuario: ");
-    scanf("%s", nuevoUsuario.nombre);
-
-    printf("Contrasena: ");
-    scanf("%s", nuevoUsuario.contrasena);
-
-    nuevoUsuario.esAdmin = 0;  // Usuario registrado, no es administrador
-
-    fentrada=fopen("usuarios.txt", "r");
-    if (fentrada == NULL) {
-        printf("Error al abrir el archivo.\n");
-        return;
-    }
-
-	fsalida=fopen("resultados.txt", "w"); // Programa escribe en el fichero lo que se vaya registrando, si el fichero no está creado, lo crea, y si está creado, lo reescribe
-	if(fsalida==NULL){
-		printf("Error, no se puedo abrir el fichero");
-	}
-
-    fwrite(&nuevoUsuario, sizeof(Usuario), 1, fsalida); //?? no se
-    fclose(fentrada);
-	fclose(fsalida);
-    printf("Usuario registrado con éxito.\n");
-}
-
-int iniciarSesion(){
-	FILE* fentrada;
-	FILE* fsalida;
-	struct Usuario usuario;
-	char nombre[M],contrasena[N];
-	
-    printf("Nombre: \n");
-    scanf("%s", usuario.nombre);
-
-    printf("Contrasena: \n");
-    scanf("%s", usuario.contrasena);
-
-    fentrada = fopen("usuarios.txt", "r");
-    if (fentrada == NULL) {
-        printf("Error al abrir el archivo.\n");
-        return 0;
-    }
-
-   
-    while (fread(&usuario, sizeof(Usuario), 1, fsalida)) {
-        if (strcmp(usuario.nombre, nombre) == 0 && strcmp(usuario.contrasena, contrasena) == 0) {
-            fclose(fsalida);
-            return usuario.esAdmin;
-        }
-    }
-	
-	fclose(fentrada);
-    fclose(fsalida);
-	
-	return 0;
-}*/
 
 
