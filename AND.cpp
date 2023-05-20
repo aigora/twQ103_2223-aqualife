@@ -36,6 +36,14 @@ float calcularMediaConductividad(struct TDatos datos[], int num_rows) {
     return media_conductividad;
 }
 
+float calcularMediaTurbidez(struct TDatos datos[], int num_rows) {
+    float media_turbidez = 0;
+    for (int i = 0; i < num_rows; i++) {
+        media_turbidez += datos[i].turbidez;
+    }
+    media_turbidez /= num_rows;
+    return media_turbidez;
+}
 
 int main() {
   HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // Almacena identificador de la consola
@@ -120,11 +128,7 @@ int main() {
       }
       
       case 3: {
-        float media_turbidez = 0;
-        for (int i = 0; i < num_rows; i++) {
-          media_turbidez += datos[i].turbidez;
-        }
-        media_turbidez /= num_rows;
+        float media_turbidez = calcularMediaTurbidez(datos, num_rows);
         printf("La media del dato turbidez es: %.2f\n", media_turbidez);
         break;
       }
