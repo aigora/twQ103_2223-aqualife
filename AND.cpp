@@ -16,16 +16,6 @@ struct TDatos {
   float coliformes;
 };
 
-/*struct Usuario{
-	char nombre[M];
-	char contrasena[N];
-	int esAdmin;
-};
-
-//DECLARACIÓN PROTOTIPOS FUNCIONES
-void registrarUsuario();
-int iniciarSesion();*/
-
 
 int main() {
   HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // Almacena identificador de la consola
@@ -47,51 +37,15 @@ int main() {
 	FILE* fentrada;
 	FILE* fsalida;
 	
-/*	int cuenta;
-	printf("Identifiquese:\n");
-	printf("1. Es nuevo? Registrese.\n");
-	printf("2. Ya tiene una cuenta? Inicie sesion.\n");
-	printf("3. Acceda como invitado.\n");
-	printf("4. Acceda como administrador.\n");
-	printf("5. Salir.\n");
-	scanf("%d",&cuenta);
-	
-	switch(cuenta){
-		int esAdmin;
-		case 1:{
-			registrarUsuario();
-			break;
-		}
-		case 2:{
-			esAdmin = iniciarSesion();
-                if (esAdmin) {
-                    printf("Inicio de sesión exitoso (administrador).\n");
-                } else {
-                    printf("Inicio de sesión exitoso (usuario).\n");
-                }
-		}
-		case 3:{
-			printf("Acceso como invitado.\n");
-			break;
-		}
-		case 4:{
-			iniciarSesion();
-			if (esAdmin==0) {
-            	printf("Ha accedido usted como administrador.\n");
-            } else {
-                printf("Acceso denegado. No tiene permiso para acceder como administrador.\n");
-            }
-			break;
-		}
-		default:
-			printf("Opcion invalida, pruebe de nuevo.");
-			
-	}*/
-	
-	
   	//Se abrirá el fichero que el usuario introduzca entre los distintos ficheros con datos de fuentes que el programa puede ofrecer
 
-  	printf("Por favor, introduzca el nombre del archivo con el que desea trabajar: \n");//Imprime texto en la consola para que el usuario sepa lo que le estï¿½ pidiendo el programa
+  	printf("Por favor, introduzca el nombre del archivo con el que desea trabajar: \n");//Imprime texto en la consola para que el usuario sepa lo que le está pidiendo el programa
+	printf("Arganzuela.txt\n");
+	printf("Barajas.txt\n");
+	printf("Carabanchel.txt\n");
+	printf("Chamartin.txt\n");
+	printf("Lavapies.txt\n");
+	printf("RoquetasDeMar.txt\n"); 
   	scanf("%s", filename); //Captura lo que ha escrito el usuario y le asigna una variable
 
   	fentrada= fopen(filename, "r");
@@ -310,67 +264,4 @@ int main() {
   return 0;
 }
 
-/*
-void registrarUsuario(){
-	struct Usuario nuevoUsuario;
-	FILE* fentrada;
-	FILE* fsalida;
-
-    printf("Nombre de usuario: ");
-    scanf("%s", nuevoUsuario.nombre);
-
-    printf("Contrasena: ");
-    scanf("%s", nuevoUsuario.contrasena);
-
-    nuevoUsuario.esAdmin = 0;  // Usuario registrado, no es administrador
-
-    fentrada=fopen("usuarios.txt", "r");
-    if (fentrada == NULL) {
-        printf("Error al abrir el archivo.\n");
-        return;
-    }
-
-	fsalida=fopen("resultados.txt", "w"); // Programa escribe en el fichero lo que se vaya registrando, si el fichero no está creado, lo crea, y si está creado, lo reescribe
-	if(fsalida==NULL){
-		printf("Error, no se puedo abrir el fichero");
-	}
-
-    fwrite(&nuevoUsuario, sizeof(Usuario), 1, fsalida); //?? no se
-    fclose(fentrada);
-	fclose(fsalida);
-    printf("Usuario registrado con éxito.\n");
-}
-
-int iniciarSesion(){
-	FILE* fentrada;
-	FILE* fsalida;
-	struct Usuario usuario;
-	char nombre[M],contrasena[N];
-	
-    printf("Nombre: \n");
-    scanf("%s", usuario.nombre);
-
-    printf("Contrasena: \n");
-    scanf("%s", usuario.contrasena);
-
-    fentrada = fopen("usuarios.txt", "r");
-    if (fentrada == NULL) {
-        printf("Error al abrir el archivo.\n");
-        return 0;
-    }
-
-   
-    while (fread(&usuario, sizeof(Usuario), 1, fsalida)) {
-        if (strcmp(usuario.nombre, nombre) == 0 && strcmp(usuario.contrasena, contrasena) == 0) {
-            fclose(fsalida);
-            return usuario.esAdmin;
-        }
-    }
-	
-	fclose(fentrada);
-    fclose(fsalida);
-	
-	return 0;
-}
-*/
 
