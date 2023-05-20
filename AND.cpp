@@ -16,43 +16,15 @@ struct TDatos {
   float coliformes;
 };
 
-float calcularMediaPH(struct TDatos datos[], int num_rows) { //La función realiza el cálculo de la media y devuelve la operación ya calculada
-	
-    float media_pH = 0;
-    for (int i = 0; i < num_rows; i++) {
-        media_pH += datos[i].pH;
-    }
-    media_pH /= num_rows;
-    return media_pH;
-}
-
-float calcularMediaConductividad(struct TDatos datos[], int num_rows) { //Los datos para realizar la media se encuntran en una estructura de datos a la cual hay que hacer referencia, asi como al números de columnas que tiene el ficheros donde están los parámetros
-	
-    float media_conductividad = 0;
-    for (int i = 0; i < num_rows; i++) {
-        media_conductividad += datos[i].conductividad;
-    }
-    media_conductividad /= num_rows;
-    return media_conductividad;
-}
-
-float calcularMediaTurbidez(struct TDatos datos[], int num_rows) { //Cuando realizamos una función, dentro del paréntesis van los datos que necesita la funcón para realizar lo que se le pida y fuera del paréntesis se escribe el nombre de la variable de lo que queremos que devuelva
-    float media_turbidez = 0;
-    for (int i = 0; i < num_rows; i++) {
-        media_turbidez += datos[i].turbidez;
-    }
-    media_turbidez /= num_rows;
-    return media_turbidez;
-}
-
-float calcularMediaColiformes(struct TDatos datos[], int num_rows){
-	float media_coliformes = 0;
-	for (int i = 0; i < num_rows; i++){
-		media_coliformes += datos[i].coliformes;
-	}
-	media_coliformes /= num_rows;
-	return media_coliformes;
-}
+//DECLARACION FUNCIONES
+float calcularMediaPH1(struct TDatos datos1[], int num_rows1);
+float calcularMediaPH2(struct TDatos datos2[], int num_rows2);
+float calcularMediaConductividad1(struct TDatos datos1[], int num_rows1);
+float calcularMediaConductividad2(struct TDatos datos2[], int num_rows2);
+float calcularMediaTurbidez1(struct TDatos datos1[], int num_rows1);
+float calcularMediaTurbidez2(struct TDatos datos2[], int num_rows2);
+float calcularMediaColiformes1(struct TDatos datos1[], int num_rows1);
+float calcularMediaColiformes2(struct TDatos datos2[], int num_rows2);
 
 
 int main() {
@@ -66,9 +38,12 @@ int main() {
   	SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY); // Azul claro
 	
 	//Declaración de variables
-	struct TDatos datos[MAX_ROWS];
-	char filename[100]; 
-  	int num_rows = 0;
+	struct TDatos datos1[MAX_ROWS];
+	struct TDatos datos2[MAX_ROWS];
+	char filename1[100];
+	char filename2[100]; 
+  	int num_rows1 = 0;
+  	int num_rows2 = 0;
   	
   	printf("--------------------BIENVENID@ A AQUALIFE-------------------\n");
   	//Abrimos el fichero
@@ -84,22 +59,22 @@ int main() {
 	printf("Chamartin.txt\n");
 	printf("Lavapies.txt\n");
 	printf("RoquetasDeMar.txt\n\n"); 
-  	scanf("%s", filename); //Captura lo que ha escrito el usuario y le asigna una variable
+  	scanf("%s", filename1); //Captura lo que ha escrito el usuario y le asigna una variable
 
-  	fentrada= fopen(filename, "r");
+  	fentrada= fopen(filename1, "r");
   	if(fentrada== NULL){
     	printf("ERROR, no se pudo abrir el archivo.\n");
     	return 0;
   	}
 
   	//Leer los datos del archivo y almacenarlos en un arreglo de estructuras
-  	while (fscanf(fentrada, "%s\t%f\t%f\t%f\t%f\n", datos[num_rows].parametros, &datos[num_rows].pH, &datos[num_rows].conductividad, &datos[num_rows].turbidez, &datos[num_rows].coliformes) !=EOF){
-    	num_rows++;
+  	while (fscanf(fentrada, "%s\t%f\t%f\t%f\t%f\n", datos1[num_rows1].parametros, &datos1[num_rows1].pH, &datos1[num_rows1].conductividad, &datos1[num_rows1].turbidez, &datos1[num_rows1].coliformes) !=EOF){
+    	num_rows1++;
   	}
 	//Cerramos el fichero
   	fclose(fentrada);
 
-  	int opcion;
+  	int opcion1,opcion2;
   	do {//El bucle do-while se ejecutara al menos una vez antes de verificar la opcion es valida
   		
   		printf("\n---MENU---\n");
@@ -113,51 +88,53 @@ int main() {
     	printf("7. Imprimir los datos de la fuente con el ph mas alto.\n");
     	printf("8. Imprimir los datos de la fuente con el ph mas bajo.\n");
     	printf("9. Cual es la fuente con el agua menos turbia?. Conozca sus datos.\n");
-		printf("10. Salir.\n\n");
-    	scanf("%d", &opcion);
+    	printf("10.Comparar con otro archivo.\n");
+		printf("11. Salir.\n\n");
+    	scanf("%d", &opcion1);
     	printf("\n");
 
-		 switch (opcion) {
+	switch (opcion1) {
 		 	
       case 1: {
-    	float media_pH = calcularMediaPH(datos, num_rows);
-    	printf("La media del dato pH es: %.2f\n", media_pH);
+      	float media_pH1 = calcularMediaPH1(datos1, num_rows1);
+    	
+    	printf("La media del dato pH es: %.2f\n", media_pH1);
 
-    	if (media_pH < 7.0) {
+    	if (media_pH1 < 7.0) {
         	printf("El valor medio del ph medido en el agua de las fuentes indica que esta es acida.\n");
-    	} else if (media_pH > 7.0) {
+    	} else if (media_pH1 > 7.0) {
         	printf("El valor medio del ph medido en el agua de las fuentes indica que esta es basica.\n");
     	} 
     	break;
       	}
       	
       case 2: {
-        float media_conductividad = calcularMediaConductividad(datos, num_rows);
-        printf("La media del dato conductividad es: %.2f\n", media_conductividad);
+      	float media_conductividad1 = calcularMediaConductividad1(datos1, num_rows1);
+        printf("La media del dato conductividad es: %.2f\n", media_conductividad1);
         break;
       }
       
       case 3: {
-        float media_turbidez = calcularMediaTurbidez(datos, num_rows);
-        printf("La media del dato turbidez es: %.2f\n", media_turbidez);
+      	float media_turbidez1 = calcularMediaTurbidez1(datos1, num_rows1);
+        printf("La media del dato turbidez es: %.2f\n", media_turbidez1);
         break;
       }
       
       case 4: {
-        float media_coliformes = calcularMediaColiformes(datos, num_rows);
-        printf("La media del dato coliformes es: %.2f\n", media_coliformes);
+      	float media_coliformes1 = calcularMediaColiformes1(datos1, num_rows1);
+        printf("La media del dato coliformes es: %.2f\n", media_coliformes1);
         break;
       }
       
       case 5: { //Esta opción permite al usuario buscar un parámetro específico en la estructura de datos e imprime la información asociada al parámetro que se encuentra
         char fuente[20]; //Arreglo de caracteres con tamaño 20
-        printf("Ingrese el nombre del parametro (fuente): ");//Se le pide al usuario que introduzca el nombre de la fuente de la que quiere saber información 
+        printf("Ingrese el nombre del parametro (fuente): "); //Se le pide al usuario que introduzca el nombre de la fuente de la que quiere saber información
         scanf("%s", fuente);
-        int encontrado = 0; //Declaramos una variable bandera para que determine si se ha encontrado o no el nomre de la fuente que el usuario ha indicado 
-        for (int i = 0; i < num_rows; i++) {
-          if (strcmp(datos[i].parametros, fuente) == 0) { //En cada iteración se van comparando los distintos parámetros con el parámetro ingresado con la función strcmp
+        int encontrado = 0; //Declaramos una variable bandera para que determine si se ha encontrado o no el nomre de la fuente que el usuario ha indicado
+        for (int i = 0; i < num_rows1; i++) {
+          if (strcmp(datos1[i].parametros, fuente) == 0) { //En cada iteración se van comparando los distintos parámetros con el parámetro ingresado con la función strcmp
         	encontrado = 1;
-            printf("Parametro: %s, pH: %.2f, Conductividad: %.2f, Turbidez: %.2f, Coliformes: %.2f\n", datos[i].parametros, datos[i].pH, datos[i].conductividad, datos[i].turbidez, datos[i].coliformes);
+            printf("Parametro: %s, pH: %.2f, Conductividad: %.2f, Turbidez: %.2f, Coliformes: %.2f\n", datos1[i].parametros, datos1[i].pH, datos1[i].conductividad, datos1[i].turbidez, datos1[i].coliformes);
           }
         }
         if (encontrado==0) { //Si el valor que devuelve es un cero, es que no se encontró la fuente
@@ -167,7 +144,7 @@ int main() {
       }
       
       case 6: {
-  		fentrada= fopen(filename, "r");
+  		fentrada= fopen(filename1, "r");
   		if (fentrada == NULL) {
     		printf("No se pudo abrir el archivo.\n");
    			break;
@@ -181,9 +158,9 @@ int main() {
   		printf("%-20s%-20s%-20s%-20s%-20s\n", "Parametros", "pH", "Conductividad", "Turbidez", "Coliformes");
 
   		// Leer los datos del archivo y almacenarlos en un arreglo de estructuras
-  		while (fscanf(fentrada, "%s\t%f\t%f\t%f\t%f\n", datos[num_rows].parametros, &datos[num_rows].pH, &datos[num_rows].conductividad, &datos[num_rows].turbidez, &datos[num_rows].coliformes) !=EOF){
-    		num_rows++;
-    		printf("%-20s%-20.2f%-20.2f%-20.2f%-20.2f\n", datos[num_rows-1].parametros, datos[num_rows-1].pH, datos[num_rows-1].conductividad, datos[num_rows-1].turbidez, datos[num_rows-1].coliformes);
+  		while (fscanf(fentrada, "%s\t%f\t%f\t%f\t%f\n", datos1[num_rows1].parametros, &datos1[num_rows1].pH, &datos1[num_rows1].conductividad, &datos1[num_rows1].turbidez, &datos1[num_rows1].coliformes) !=EOF){
+    		num_rows1++;
+    		printf("%-20s%-20.2f%-20.2f%-20.2f%-20.2f\n", datos1[num_rows1-1].parametros, datos1[num_rows1-1].pH, datos1[num_rows1-1].conductividad, datos1[num_rows1-1].turbidez, datos1[num_rows1-1].coliformes);
   		}
 
   		fclose(fentrada);
@@ -196,20 +173,20 @@ int main() {
 	
 	  case 7: {
 	  	printf("\nLos datos de la fuente con el pH mas alto son:\n");
-    	float max_pH = datos[0].pH;
+    	float max_pH = datos1[0].pH;
     	int max_index = 0;
-    	for (int i = 1; i < num_rows; i++) {
-        	if (datos[i].pH > max_pH) {
-            	max_pH = datos[i].pH;
+    	for (int i = 1; i < num_rows1; i++) {
+        	if (datos1[i].pH > max_pH) {
+            	max_pH = datos1[i].pH;
             	max_index = i;
         	}
     	}
 
-    	printf("Nombre: %s\n", datos[max_index].parametros);
-    	printf("pH: %.2f\n", datos[max_index].pH);
-    	printf("Conductividad: %.2f\n", datos[max_index].conductividad);
-    	printf("Turbidez: %.2f\n", datos[max_index].turbidez);
-    	printf("Coliformes: %.2f\n", datos[max_index].coliformes);
+    	printf("Nombre: %s\n", datos1[max_index].parametros);
+    	printf("pH: %.2f\n", datos1[max_index].pH);
+    	printf("Conductividad: %.2f\n", datos1[max_index].conductividad);
+    	printf("Turbidez: %.2f\n", datos1[max_index].turbidez);
+    	printf("Coliformes: %.2f\n", datos1[max_index].coliformes);
 	  	
 		break;
 	  }
@@ -220,29 +197,26 @@ int main() {
     float min_pH = 0;
     int min_index = -1;
 
-    for (int i = 0; i < num_rows; i++) {
-        if (datos[i].pH != 0 && strcmp(datos[i].parametros, "Parametros") != 0) {
-            if (min_index == -1 || datos[i].pH < min_pH) {
-                min_pH = datos[i].pH;
+    for (int i = 0; i < num_rows1; i++) {
+        if (datos1[i].pH != 0 && strcmp(datos1[i].parametros, "Parametros") != 0) {
+            if (min_index == -1 || datos1[i].pH < min_pH) {
+                min_pH = datos1[i].pH;
                 min_index = i;
             }
         }
     }
 
     if (min_index != -1) {
-        printf("Nombre: %s\n", datos[min_index].parametros);
-        printf("pH: %.2f\n", datos[min_index].pH);
-        printf("Conductividad: %.2f\n", datos[min_index].conductividad);
-        printf("Turbidez: %.2f\n", datos[min_index].turbidez);
-        printf("Coliformes: %.2f\n", datos[min_index].coliformes);
+        printf("Nombre: %s\n", datos1[min_index].parametros);
+        printf("pH: %.2f\n", datos1[min_index].pH);
+        printf("Conductividad: %.2f\n", datos1[min_index].conductividad);
+        printf("Turbidez: %.2f\n", datos1[min_index].turbidez);
+        printf("Coliformes: %.2f\n", datos1[min_index].coliformes);
     } else {
         printf("No se encontraron fuentes con pH distinto de cero y con campo Parametros informado.\n");
     }
     break;
-}
-	  	
-	  	
-	  
+}	  
 	  	
 	  case 9: {
 	  	printf("\nLos datos de la fuente con el agua menos turbia es: \n");
@@ -250,21 +224,21 @@ int main() {
     	float min_turbidez = 0;
     	int min_index = -1;
 
-    	for (int i = 0; i < num_rows; i++) {
-        	if (datos[i].turbidez!= 0 && strcmp(datos[i].parametros, "Parametros") != 0) {
-            	if (min_index == -1 || datos[i].turbidez < min_turbidez) {
-                	min_turbidez= datos[i].turbidez;
+    	for (int i = 0; i < num_rows1; i++) {
+        	if (datos1[i].turbidez!= 0 && strcmp(datos1[i].parametros, "Parametros") != 0) {
+            	if (min_index == -1 || datos1[i].turbidez < min_turbidez) {
+                	min_turbidez= datos1[i].turbidez;
                 	min_index = i;
             	}
         	}
     	}
 
     	if (min_index != -1) {
-        	printf("Nombre: %s\n", datos[min_index].parametros);
-        	printf("pH: %.2f\n", datos[min_index].pH);
-        	printf("Conductividad: %.2f\n", datos[min_index].conductividad);
-        	printf("Turbidez: %.2f\n", datos[min_index].turbidez);
-        	printf("Coliformes: %.2f\n", datos[min_index].coliformes);
+        	printf("Nombre: %s\n", datos1[min_index].parametros);
+        	printf("pH: %.2f\n", datos1[min_index].pH);
+        	printf("Conductividad: %.2f\n", datos1[min_index].conductividad);
+        	printf("Turbidez: %.2f\n", datos1[min_index].turbidez);
+        	printf("Coliformes: %.2f\n", datos1[min_index].coliformes);
     	}else {
         	printf("No se encontraron fuentes con pH distinto de cero y con campo Parametros informado.\n");
     	}
@@ -273,7 +247,118 @@ int main() {
 	  }
 	  
 	  case 10: {
-        printf("Gracias por confiar en AquaLife\n");
+		printf("Arganzuela.txt\n");
+		printf("Barajas.txt\n");
+		printf("Carabanchel.txt\n");
+		printf("Chamartin.txt\n");
+		printf("Lavapies.txt\n");
+		printf("RoquetasDeMar.txt\n\n"); 
+  		scanf("%s", filename2); //Captura lo que ha escrito el usuario y le asigna una variable
+		printf("\n");
+		
+  		fentrada= fopen(filename2, "r");
+  		if(fentrada== NULL){
+    		printf("ERROR, no se pudo abrir el archivo.\n");
+    		return 0;
+  		}
+
+  		//Leer los datos del archivo y almacenarlos en un arreglo de estructuras
+  		while (fscanf(fentrada, "%s\t%f\t%f\t%f\t%f\n", datos2[num_rows2].parametros, &datos2[num_rows2].pH, &datos2[num_rows2].conductividad, &datos2[num_rows2].turbidez, &datos2[num_rows2].coliformes) !=EOF){
+    	num_rows2++;
+  		}
+		//Cerramos el fichero
+  		fclose(fentrada);
+		
+		do{
+			printf("\n");
+		printf("Por favor, introduzca el nombre del archivo con el que desea trabajar: \n");
+		printf("1. Realizar las medias del ph de las fuentes de cada fichero y compararlas.\n");
+		printf("2. Realizar las medias de la conductividad de las fuentes de cada fichero y compararlas.\n");
+		printf("3. Realizar las medias de la turbidez de las fuentes de cada fichero y compararlas.\n");
+		printf("4. Realizar las medias de los coliformes presentes en las fuentes de cada fichero y compararlos.\n");
+		printf("5. Salir.\n\n");
+		scanf("%d",&opcion2);
+		printf("\n");
+		
+    	
+		switch (opcion2) {
+			case 1: {
+				float media_pH1 = calcularMediaPH1(datos1, num_rows1);
+				float media_pH2 = calcularMediaPH2(datos2, num_rows2);
+				
+				printf("La media del ph de %s es %f.\n",filename1,media_pH1);
+				printf("La media del ph de %s es %f.\n",filename2,media_pH2);
+				
+				if(media_pH1>media_pH2){
+					printf("El pH de %s es mas acido que el pH de %s.\n",filename1,filename2);
+				} else{
+					printf("El pH de %s es mas acido que el pH de %s.\n",filename2,filename1);
+				}
+				
+				break;
+			}
+			
+			case 2: {
+				float media_conductividad1 = calcularMediaConductividad1(datos1, num_rows1);
+				float media_conductividad2 = calcularMediaConductividad2(datos2, num_rows2);
+        		printf("La media de la conductividad de %s es %.2f.\n",filename1 , media_conductividad1);
+        		printf("La media de la conductividad de %s es %.2f.\n", filename2, media_conductividad2);
+        		
+        		if(media_conductividad1>media_conductividad2){
+					printf("El valor de la conductividad de %s es mayor que el de %s.\n",filename1,filename2);
+				} else{
+					printf("El valor de la conductividad de %s es mayor que el de %s.\n",filename2,filename1);
+				}
+        		
+				break;
+			}
+			
+			case 3: {
+				float media_turbidez1 = calcularMediaTurbidez1(datos1, num_rows1);
+				float media_turbidez2 = calcularMediaTurbidez2(datos2, num_rows2);
+        		printf("La media de la turbidez de %s es %.2f.\n", filename1, media_turbidez1);
+        		printf("La media de la turbidez de %s es %.2f.\n", filename2, media_turbidez2);
+        		
+        		if(media_turbidez1>media_turbidez2){
+					printf("El valor de la turbidez de %s es mayor que el de %s.\n",filename1,filename2);
+				} else{
+					printf("El valor de la turbidez de %s es mayor que el de %s.\n",filename2,filename1);
+				}
+				
+				break;
+			}
+			
+			case 4: {
+				float media_coliformes1 = calcularMediaColiformes1(datos1, num_rows1);
+				float media_coliformes2 = calcularMediaColiformes2(datos2, num_rows2);
+        		printf("La media del dato coliformes de %s es %.2f.\n", filename1, media_coliformes1);
+        		printf("La media del dato coliformes de %s es %.2f.\n", filename2, media_coliformes2);
+        		
+        		if(media_coliformes1>media_coliformes2){
+					printf("El valor de los coliformes de %s es mayor que el de %s.\n",filename1,filename2);
+				} else{
+					printf("El valor de los coliformes de %s es mayor que el de %s.\n",filename2,filename1);
+				}
+        		
+				break;
+			}
+			
+			case 5: {
+				printf("Gracias por confiar en AquaLife.\n");
+        		break;
+      		}
+      
+      		default: {
+        	printf("Opcion invalida.\n");
+        	break;
+      		}
+		}
+	} while (opcion2<=4);
+		
+		break;
+	}
+	  case 11: {
+        printf("Gracias por confiar en AquaLife.\n");
         break;
       }
       
@@ -281,10 +366,87 @@ int main() {
         printf("Opcion invalida.\n");
         break;
       }
-    }
-  } while (opcion!= 10);
+	}
+  } while (opcion1<= 10);
 
   return 0;
 }
 
+//DESARROLLO FUNCIONES
+float calcularMediaPH1(struct TDatos datos1[], int num_rows1) { //La función realiza el cálculo de la media y devuelve la operación ya calculada
+	
+    float media_pH1 = 0;
+    for (int i = 0; i < num_rows1; i++) {
+        media_pH1 += datos1[i].pH;
+    }
+    media_pH1 /= num_rows1;
+    return media_pH1;
+}
+
+float calcularMediaPH2(struct TDatos datos2[], int num_rows2) { 
+	
+    float media_pH2 = 0;
+    for (int i = 0; i < num_rows2; i++) {
+        media_pH2 += datos2[i].pH;
+    }
+    media_pH2 /= num_rows2;
+    return media_pH2;
+}
+
+float calcularMediaConductividad1(struct TDatos datos1[], int num_rows1) { //Los datos para realizar la media se encuntran en una estructura de datos a la cual hay que hacer referencia, asi como al números de columnas que tiene el ficheros donde están los parámetros
+
+	
+    float media_conductividad1 = 0;
+    for (int i = 0; i < num_rows1; i++) {
+        media_conductividad1 += datos1[i].conductividad;
+    }
+    media_conductividad1 /= num_rows1;
+    return media_conductividad1;
+}
+
+float calcularMediaConductividad2(struct TDatos datos2[], int num_rows2) {
+	
+    float media_conductividad2 = 0;
+    for (int i = 0; i < num_rows2; i++) {
+        media_conductividad2 += datos2[i].conductividad;
+    }
+    media_conductividad2 /= num_rows2;
+    return media_conductividad2;
+}
+
+float calcularMediaTurbidez1(struct TDatos datos1[], int num_rows1) { //Cuando realizamos una función, dentro del paréntesis van los datos que necesita la funcón para realizar lo que se le pida y fuera del paréntesis se escribe el nombre de la variable de lo que queremos que devuelva
+    float media_turbidez1 = 0;
+    for (int i = 0; i < num_rows1; i++) {
+        media_turbidez1 += datos1[i].turbidez;
+    }
+    media_turbidez1 /= num_rows1;
+    return media_turbidez1;
+}
+
+float calcularMediaTurbidez2(struct TDatos datos2[], int num_rows2) {
+    float media_turbidez2 = 0;
+    for (int i = 0; i < num_rows2; i++) {
+        media_turbidez2 += datos2[i].turbidez;
+    }
+    media_turbidez2 /= num_rows2;
+    return media_turbidez2;
+}
+
+float calcularMediaColiformes1(struct TDatos datos1[], int num_rows1){
+	float media_coliformes1 = 0;
+	for (int i = 0; i < num_rows1; i++){
+		media_coliformes1 += datos1[i].coliformes;
+	}
+	media_coliformes1 /= num_rows1;
+	return media_coliformes1;
+}
+
+float calcularMediaColiformes2(struct TDatos datos2[], int num_rows2){
+	float media_coliformes2 = 0;
+	for (int i = 0; i < num_rows2; i++){
+		media_coliformes2 += datos2[i].coliformes;
+	}
+	media_coliformes2 /= num_rows2;
+	return media_coliformes2;
+}
 
