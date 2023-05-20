@@ -1,5 +1,5 @@
 Nombre	Contrasena	esAdmin
-napolitanacc		1
+napolitanacc	1506	1
 lauuracp		1405	1
 noeliamateos	2903	1
 Dieguiii		1005	1
