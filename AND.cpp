@@ -310,7 +310,7 @@ int main() {
   return 0;
 }
 
-/*//DESARROLLO FUNCIONES
+/*
 void registrarUsuario(){
 	struct Usuario nuevoUsuario;
 	FILE* fentrada;
@@ -372,5 +372,5 @@ int iniciarSesion(){
 	
 	return 0;
 }
-
+*/
 
