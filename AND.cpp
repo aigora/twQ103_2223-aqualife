@@ -16,7 +16,7 @@ struct TDatos {
   float coliformes;
 };
 
-float calcularMediaPH(struct TDatos datos[], int num_rows) {
+float calcularMediaPH(struct TDatos datos[], int num_rows) { //La función realiza el cálculo de la media y devuelve la operación ya calculada
 	
     float media_pH = 0;
     for (int i = 0; i < num_rows; i++) {
@@ -26,7 +26,7 @@ float calcularMediaPH(struct TDatos datos[], int num_rows) {
     return media_pH;
 }
 
-float calcularMediaConductividad(struct TDatos datos[], int num_rows) {
+float calcularMediaConductividad(struct TDatos datos[], int num_rows) { //Los datos para realizar la media se encuntran en una estructura de datos a la cual hay que hacer referencia, asi como al números de columnas que tiene el ficheros donde están los parámetros
 	
     float media_conductividad = 0;
     for (int i = 0; i < num_rows; i++) {
@@ -36,7 +36,7 @@ float calcularMediaConductividad(struct TDatos datos[], int num_rows) {
     return media_conductividad;
 }
 
-float calcularMediaTurbidez(struct TDatos datos[], int num_rows) {
+float calcularMediaTurbidez(struct TDatos datos[], int num_rows) { //Cuando realizamos una función, dentro del paréntesis van los datos que necesita la funcón para realizar lo que se le pida y fuera del paréntesis se escribe el nombre de la variable de lo que queremos que devuelva
     float media_turbidez = 0;
     for (int i = 0; i < num_rows; i++) {
         media_turbidez += datos[i].turbidez;
@@ -44,6 +44,16 @@ float calcularMediaTurbidez(struct TDatos datos[], int num_rows) {
     media_turbidez /= num_rows;
     return media_turbidez;
 }
+
+float calcularMediaColiformes(struct TDatos datos[], int num_rows){
+	float media_coliformes = 0;
+	for (int i = 0; i < num_rows; i++){
+		media_coliformes += datos[i].coliformes;
+	}
+	media_coliformes /= num_rows;
+	return media_coliformes;
+}
+
 
 int main() {
   HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // Almacena identificador de la consola
@@ -134,11 +144,7 @@ int main() {
       }
       
       case 4: {
-        float media_coliformes = 0;
-        for (int i = 0; i < num_rows; i++) {
-          media_coliformes += datos[i].coliformes;
-        }
-        media_coliformes /= num_rows;
+        float media_coliformes = calcularMediaColiformes(datos, num_rows);
         printf("La media del dato coliformes es: %.2f\n", media_coliformes);
         break;
       }
