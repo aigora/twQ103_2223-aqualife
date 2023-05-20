@@ -344,7 +344,7 @@ int main() {
 			}
 			
 			case 5: {
-				printf("Gracias por confiar en AquaLife.\n");
+				printf("Volviendo a Menu Principal...\n");
         		break;
       		}
       
