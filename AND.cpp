@@ -16,7 +16,7 @@ struct TDatos {
   float coliformes;
 };
 
-//DECLARACION FUNCIONES
+//DECLARACION FUNCIONES 
 float calcularMediaPH1(struct TDatos datos1[], int num_rows1);
 float calcularMediaPH2(struct TDatos datos2[], int num_rows2);
 float calcularMediaConductividad1(struct TDatos datos1[], int num_rows1);
@@ -53,12 +53,6 @@ int main() {
   	//Se abrirá el fichero que el usuario introduzca entre los distintos ficheros con datos de fuentes que el programa puede ofrecer
 
   	printf("Por favor, introduzca el nombre del archivo con el que desea trabajar: \n");//Imprime texto en la consola para que el usuario sepa lo que le está pidiendo el programa
-	printf("Arganzuela.txt\n");
-	printf("Barajas.txt\n");
-	printf("Carabanchel.txt\n");
-	printf("Chamartin.txt\n");
-	printf("Lavapies.txt\n");
-	printf("RoquetasDeMar.txt\n\n"); 
   	scanf("%s", filename1); //Captura lo que ha escrito el usuario y le asigna una variable
 
   	fentrada= fopen(filename1, "r");
@@ -247,17 +241,11 @@ int main() {
 	  }
 	  
 	  case 10: {
-		printf("Arganzuela.txt\n");
-		printf("Barajas.txt\n");
-		printf("Carabanchel.txt\n");
-		printf("Chamartin.txt\n");
-		printf("Lavapies.txt\n");
-		printf("RoquetasDeMar.txt\n\n"); 
+		printf("Por favor, introduzca el nombre del segundo archivo con el que desea trabajar: \n");
   		scanf("%s", filename2); //Captura lo que ha escrito el usuario y le asigna una variable
-		printf("\n");
 		
   		fentrada= fopen(filename2, "r");
-  		if(fentrada== NULL){
+  		if(fentrada== NULL){ //En el caso de introducir el nombre mal escrito o un archivo que no exista, el programa dará un mensaje de error para que el usuario sepa que ese nombre no es correcto
     		printf("ERROR, no se pudo abrir el archivo.\n");
     		return 0;
   		}
@@ -271,12 +259,12 @@ int main() {
 		
 		do{
 			printf("\n");
-		printf("Por favor, introduzca el nombre del archivo con el que desea trabajar: \n");
+		printf("Por favor, introduzca la opción que desea realizar: \n");
 		printf("1. Realizar las medias del ph de las fuentes de cada fichero y compararlas.\n");
 		printf("2. Realizar las medias de la conductividad de las fuentes de cada fichero y compararlas.\n");
 		printf("3. Realizar las medias de la turbidez de las fuentes de cada fichero y compararlas.\n");
 		printf("4. Realizar las medias de los coliformes presentes en las fuentes de cada fichero y compararlos.\n");
-		printf("5. Salir.\n\n");
+		printf("5. Salir.\n");
 		scanf("%d",&opcion2);
 		printf("\n");
 		
@@ -289,10 +277,12 @@ int main() {
 				printf("La media del ph de %s es %f.\n",filename1,media_pH1);
 				printf("La media del ph de %s es %f.\n",filename2,media_pH2);
 				
-				if(media_pH1>media_pH2){
-					printf("El pH de %s es mas acido que el pH de %s.\n",filename1,filename2);
-				} else{
-					printf("El pH de %s es mas acido que el pH de %s.\n",filename2,filename1);
+				if(media_pH1<media_pH2){ //OJO, el ph más ácido es el que tiene el valor más bajo de ph
+					printf("El pH medio de %s es mas acido que el pH de %s.\n",filename1,filename2);
+				}else if (media_pH1>media_pH2){
+					printf("El pH medio de %s es mas acido que el pH de %s.\n",filename2,filename1);
+				}else{
+					printf("Ambas medias de ph son iguales\n");
 				}
 				
 				break;
@@ -305,9 +295,11 @@ int main() {
         		printf("La media de la conductividad de %s es %.2f.\n", filename2, media_conductividad2);
         		
         		if(media_conductividad1>media_conductividad2){
-					printf("El valor de la conductividad de %s es mayor que el de %s.\n",filename1,filename2);
-				} else{
-					printf("El valor de la conductividad de %s es mayor que el de %s.\n",filename2,filename1);
+					printf("El valor medio de la conductividad de %s es mayor que el de %s.\n",filename1,filename2);
+				} else if (media_conductividad1<media_conductividad2){
+					printf("El valor medio de la conductividad de %s es mayor que el de %s.\n",filename2,filename1);
+				}else{
+					printf("%s y %s tienen la misma conductividad media\n", filename1, filename2);
 				}
         		
 				break;
@@ -321,8 +313,10 @@ int main() {
         		
         		if(media_turbidez1>media_turbidez2){
 					printf("El valor de la turbidez de %s es mayor que el de %s.\n",filename1,filename2);
-				} else{
+				} else if (media_turbidez1<media_turbidez2){
 					printf("El valor de la turbidez de %s es mayor que el de %s.\n",filename2,filename1);
+				}else {
+					printf("%s y %s tienen la misma turbidez media\n", filename1, filename2);
 				}
 				
 				break;
@@ -336,8 +330,10 @@ int main() {
         		
         		if(media_coliformes1>media_coliformes2){
 					printf("El valor de los coliformes de %s es mayor que el de %s.\n",filename1,filename2);
-				} else{
+				} else if (media_coliformes1<media_coliformes2){
 					printf("El valor de los coliformes de %s es mayor que el de %s.\n",filename2,filename1);
+				}else{
+					printf("%s y %s tienen la misma media de coliformes presentes en el agua\n");
 				}
         		
 				break;
@@ -383,7 +379,7 @@ float calcularMediaPH1(struct TDatos datos1[], int num_rows1) { //La función rea
     return media_pH1;
 }
 
-float calcularMediaPH2(struct TDatos datos2[], int num_rows2) { 
+float calcularMediaPH2(struct TDatos datos2[], int num_rows2) { //Como vamos a comparar dos ficheros, tenemos que definir una función para que realice la media del otro con el que vamos a comparar
 	
     float media_pH2 = 0;
     for (int i = 0; i < num_rows2; i++) {
