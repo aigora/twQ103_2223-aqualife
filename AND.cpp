@@ -28,19 +28,19 @@ float calcularMediaColiformes2(struct TDatos datos2[], int num_rows2);
 
 
 int main() {
-  HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // Almacena identificador de la consola
-  CONSOLE_SCREEN_BUFFER_INFO consoleInfo; // Almacena información de la consola
+  HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // Almacenar identificador de la consola
+  CONSOLE_SCREEN_BUFFER_INFO consoleInfo; // Almacenar información de la consola
   WORD saved_attributes; // Almacenar los atributos originales de la consola
   GetConsoleScreenBufferInfo(hConsole, &consoleInfo); // Obtener información de la consola
   saved_attributes = consoleInfo.wAttributes; // Almacenar los atributos originales de la consola
 
   	// Modificar los atributos de la consola
-  	SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY); // Azul claro
+  	SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY); // Representa el color azul del texto | representa el color verde del texto | cte que indica la intesidad del brillo
 	
-	//Declaración de variables
+	//DECLARACIÓN DE VARIABLES 
 	struct TDatos datos1[MAX_ROWS];
 	struct TDatos datos2[MAX_ROWS];
-	char filename1[100];
+	char filename1[100]; 
 	char filename2[100]; 
   	int num_rows1 = 0;
   	int num_rows2 = 0;
@@ -90,7 +90,7 @@ int main() {
 	switch (opcion1) {
 		 	
       case 1: {
-      	float media_pH1 = calcularMediaPH1(datos1, num_rows1);
+      	float media_pH1 = calcularMediaPH1(datos1, num_rows1); //Llamamos a la función, esto puede ser útil para no tener que estar escribiendo todo el rato el código que se desea realizar, simplemente mencionas a la función y ya sabe la operación que tiene que realizar
     	
     	printf("La media del dato pH es: %.2f\n", media_pH1);
 
@@ -137,18 +137,18 @@ int main() {
         break;
       }
       
-      case 6: {
-  		fentrada= fopen(filename1, "r");
-  		if (fentrada == NULL) {
+      case 6: {  // Imprimir los datos de todas las fuentes del fichero 
+  		fentrada= fopen(filename1, "r"); //Accedemos al fichero para leer su contenido
+  		if (fentrada == NULL) { //Se verifica si se abrió correctamente 
     		printf("No se pudo abrir el archivo.\n");
    			break;
   		}
 
   		// Leer la primera fila del archivo y almacenarla en una variable separada
-  		char header[100];
-  		fgets(header, sizeof(header), fentrada);
+  		char header[100]; //La utilizaremos para almacenar la primera línea del archivo
+  		fgets(header, sizeof(header), fentrada); //sizeof(header) indica el tamaño máximo de caracteres a leer
 
-  		// Mostrar la cabecera de las columnas
+  		// Mostrar la cabecera de las columnas en la consola 
   		printf("%-20s%-20s%-20s%-20s%-20s\n", "Parametros", "pH", "Conductividad", "Turbidez", "Coliformes");
 
   		// Leer los datos del archivo y almacenarlos en un arreglo de estructuras
@@ -160,7 +160,7 @@ int main() {
   		fclose(fentrada);
   
   		printf("\n");
-    	getchar();
+    	getchar(); //Espera a que el usuario presione cualquier tecla antes de continuar con el programa, proporciona una pausa para que el usuario pueda observar los datos antes de continuar
   
   		break;
 	}
@@ -188,28 +188,28 @@ int main() {
 	  case 8: {
 	  	printf("\nLos datos de la fuente con el pH mas bajo son:\n");
 
-    float min_pH = 0;
-    int min_index = -1;
+    	float min_pH = 0; //Esta variable se utilizará para almacenar elvalor del ph encontrado más bajo
+    	int min_index = -1; //Esta variable se utilizará para almacenar el índice de la fuente con el ph más bajo
 
-    for (int i = 0; i < num_rows1; i++) {
-        if (datos1[i].pH != 0 && strcmp(datos1[i].parametros, "Parametros") != 0) {
-            if (min_index == -1 || datos1[i].pH < min_pH) {
-                min_pH = datos1[i].pH;
-                min_index = i;
-            }
-        }
-    }
+    	for (int i = 0; i < num_rows1; i++) {
+        	if (datos1[i].pH != 0 && strcmp(datos1[i].parametros, "Parametros") != 0) { //Comprueba si el valor actual del ph es diferente de 0 y si el campo de parámetros no es igual a la cadena parámetros
+            	if (min_index == -1 || datos1[i].pH < min_pH) { //Comprueba si el índice mínimo es -1 o si el ph en la fila actual es menor que el valor mínimo 
+                	min_pH = datos1[i].pH; //Si se cumple la condición anterior, se actualiza el valor mínimo con el valor del ph en la fila actual 
+                	min_index = i;
+            	}
+        	}
+    	}
 
-    if (min_index != -1) {
-        printf("Nombre: %s\n", datos1[min_index].parametros);
-        printf("pH: %.2f\n", datos1[min_index].pH);
-        printf("Conductividad: %.2f\n", datos1[min_index].conductividad);
-        printf("Turbidez: %.2f\n", datos1[min_index].turbidez);
-        printf("Coliformes: %.2f\n", datos1[min_index].coliformes);
-    } else {
-        printf("No se encontraron fuentes con pH distinto de cero y con campo Parametros informado.\n");
-    }
-    break;
+    	if (min_index != -1) {
+        	printf("Nombre: %s\n", datos1[min_index].parametros);
+        	printf("pH: %.2f\n", datos1[min_index].pH);
+        	printf("Conductividad: %.2f\n", datos1[min_index].conductividad);
+       	 	printf("Turbidez: %.2f\n", datos1[min_index].turbidez);
+        	printf("Coliformes: %.2f\n", datos1[min_index].coliformes);
+    	}	else {
+        	printf("No se encontraron fuentes con pH distinto de cero y con campo Parametros informado.\n");
+    	}	
+   		break;
 }	  
 	  	
 	  case 9: {
