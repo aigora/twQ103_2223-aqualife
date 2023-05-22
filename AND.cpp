@@ -53,8 +53,15 @@ int main() {
   	//Se abrirá el fichero que el usuario introduzca entre los distintos ficheros con datos de fuentes que el programa puede ofrecer
 
   	printf("Por favor, introduzca el nombre del archivo con el que desea trabajar: \n");//Imprime texto en la consola para que el usuario sepa lo que le está pidiendo el programa
+	printf("Arganzuela.txt\n");
+	printf("Barajas.txt\n");
+	printf("Carabanchel.txt\n");
+	printf("Chamartin.txt\n");
+	printf("Lavapies.txt\n");
+	printf("RoquetasDeMar.txt\n\n"); 
   	scanf("%s", filename1); //Captura lo que ha escrito el usuario y le asigna una variable
 
+	
   	fentrada= fopen(filename1, "r");
   	if(fentrada== NULL){
     	printf("ERROR, no se pudo abrir el archivo.\n");
